@@ -8,6 +8,12 @@
 
 'use strict';
 
+import * as fs from "fs"
+import * as childProc from "child_process"
+import * as pathUtil from "path"
+import * as $import_os from "os"
+import * as $import_crypto from "crypto"
+
 var
   IS_WIN = process.platform === 'win32',
 
@@ -15,10 +21,10 @@ var
   ALGORITHM_HASH = 'sha256',
   DEFAULT_ERR_MSG = 'The current environment doesn\'t support interactive reading from TTY.',
 
-  fs = require('fs'),
+  // fs = require('fs'),
   TTY = process.binding('tty_wrap').TTY,
-  childProc = require('child_process'),
-  pathUtil = require('path'),
+  // childProc = require('child_process'),
+  // pathUtil = require('path'),
 
   defaultOptions = {
     /* eslint-disable key-spacing */
@@ -91,7 +97,7 @@ function _execFileSync(options, execOptions) {
   function getTempfile(name) {
     var suffix = '',
       filepath, fd;
-    tempdir = tempdir || require('os').tmpdir();
+    tempdir = tempdir || /* require('os') */ $import_os.tmpdir();
 
     while (true) {
       filepath = pathUtil.join(tempdir, name + suffix);
@@ -116,7 +122,7 @@ function _execFileSync(options, execOptions) {
     pathStderr = getTempfile('readline-sync.stderr'),
     pathExit = getTempfile('readline-sync.exit'),
     pathDone = getTempfile('readline-sync.done'),
-    crypto = require('crypto'),
+    crypto = /* require('crypto') */ $import_crypto,
     hostArgs, shellPath, shellArgs, exitCode, extMessage, shasum, decipher, password;
 
   shasum = crypto.createHash(ALGORITHM_HASH);
