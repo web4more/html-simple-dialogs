@@ -1,40 +1,50 @@
 {
-  "name": "readline-sync",
-  "version": "1.4.10",
-  "title": "readlineSync",
-  "description": "Synchronous Readline for interactively running to have a conversation with the user via a console(TTY).",
+  "name": "@jcbhmr/html-simple-dialogs",
+  "version": "1.0.0",
+  "description": "🗨️ prompt() and friends for Node.js",
   "keywords": [
-    "readline",
-    "synchronous",
-    "interactive",
+    "sync",
     "prompt",
-    "question",
-    "password",
-    "cli",
-    "tty",
-    "command",
-    "repl",
-    "keyboard",
-    "wait",
-    "block"
+    "confirm",
+    "alert",
+    "polyfill"
   ],
-  "main": "./lib/readline-sync.js",
-  "files": [
-    "lib/*.@(js|ps1|sh)",
-    "README-Deprecated.md"
-  ],
-  "engines": {
-    "node": ">= 0.8.0"
-  },
-  "homepage": "https://github.com/anseki/readline-sync",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/anseki/readline-sync.git"
-  },
-  "bugs": "https://github.com/anseki/readline-sync/issues",
+  "homepage": "https://jcbhmr.github.io/html-simple-dialogs/",
+  "bugs": "https://github.com/jcbhmr/html-simple-dialogs/issues",
+  "repository": "github:jcbhmr/html-simple-dialogs",
   "license": "MIT",
-  "author": {
-    "name": "anseki",
-    "url": "https://github.com/anseki"
+  "author": "Jacob Hummer <jcbhmr@outlook.com> (https://jcbhmr.me/)",
+  "contributors": [
+    "anseki (https://github.com/anseki)"
+  ],
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "default": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "docs:prepack": "typedoc",
+    "prepack": "vite build",
+    "start": "vitest watch",
+    "pretest": "prettier -w --ignore-file .gitignore .",
+    "test": "tsc --noEmit && vitest run"
+  },
+  "dependencies": {
+    "bindings": "^1.5.0"
+  },
+  "devDependencies": {
+    "node-addon-api": "^6.0.0",
+    "node-gyp": "^9.3.1",
+    "prettier": "^2.8.4",
+    "prettier-plugin-jsdoc": "^0.4.2",
+    "prettier-plugin-packagejson": "^2.4.3",
+    "typedoc": "^0.23.26",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.4",
+    "vite-plugin-dts": "^2.1.0",
+    "vite-plugin-no-bundle": "^2.0.2",
+    "vitest": "^0.29.2"
   }
 }
