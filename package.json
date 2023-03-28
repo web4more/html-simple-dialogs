@@ -14,9 +14,9 @@
   "bugs": "https://github.com/jcbhmr/html-simple-dialogs/issues",
   "repository": "github:jcbhmr/html-simple-dialogs",
   "license": "MIT",
-  "author": "Jacob Hummer <jcbhmr@outlook.com> (https://jcbhmr.me/)",
   "contributors": [
-    "anseki (https://github.com/anseki)"
+    "anseki (https://github.com/anseki)",
+    "Jacob Hummer <jcbhmr@outlook.com> (https://jcbhmr.me/)"
   ],
   "exports": {
     "types": "./dist/index.d.ts",
@@ -33,13 +33,14 @@
     "test": "tsc --noEmit && vitest run"
   },
   "devDependencies": {
-    "prettier": "^2.8.4",
+    "node-gyp": "^9.3.1",
+    "prettier": "^2.8.7",
     "prettier-plugin-jsdoc": "^0.4.2",
     "prettier-plugin-packagejson": "^2.4.3",
     "typedoc": "^0.23.26",
     "typescript": "^4.9.5",
-    "vite": "^4.1.4",
+    "vite": "^4.2.1",
     "vite-plugin-dts": "^2.1.0",
-    "vitest": "^0.29.2"
+    "vitest": "^0.29.7"
   }
 }
