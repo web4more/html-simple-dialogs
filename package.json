@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "name": "@jcbhmr/html-simple-dialogs",
   "version": "1.0.0",
   "description": "🗨️ prompt() and friends for Node.js",
@@ -18,6 +17,7 @@
     "anseki (https://github.com/anseki)",
     "Jacob Hummer <jcbhmr@outlook.com> (https://jcbhmr.me/)"
   ],
+  "type": "module",
   "exports": {
     "types": "./dist/index.d.ts",
     "default": "./dist/index.js"
@@ -26,7 +26,6 @@
     "dist"
   ],
   "scripts": {
-    "docs:prepack": "typedoc",
     "prepack": "vite build",
     "start": "vitest watch",
     "pretest": "prettier -w --ignore-file .gitignore .",
@@ -36,10 +35,14 @@
     "prettier": "^2.8.7",
     "prettier-plugin-jsdoc": "^0.4.2",
     "prettier-plugin-packagejson": "^2.4.3",
-    "typedoc": "^0.23.26",
+    "tsx": "^3.12.6",
     "typescript": "^4.9.5",
     "vite": "^4.2.1",
     "vite-plugin-dts": "^2.1.0",
+    "vite-plugin-no-bundle": "^2.0.2",
     "vitest": "^0.29.7"
+  },
+  "dependencies": {
+    "ts-dedent": "^2.2.0"
   }
 }
