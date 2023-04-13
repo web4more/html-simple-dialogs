@@ -1,6 +1,6 @@
-import cannotShowSimpleDialogs from "./cannotShowSimpleDialogs.ts"
-import normalizeNewlines from "./normalizeNewlines.ts"
-import optionallyTruncateASimpleDialogString from "./optionallyTruncateASimpleDialogString.ts"
+import cannotShowSimpleDialogs from "./cannotShowSimpleDialogs.ts";
+import { normalizeNewlines } from "@oozcitak/infra";
+import optionallyTruncateASimpleDialogString from "./optionallyTruncateASimpleDialogString.ts";
 import redletSync from "./redletSync.ts";
 
 /**
@@ -19,7 +19,7 @@ function prompt(message: string = "", default_: string = ""): string | null {
   // The prompt(message, default) method steps are:
 
   // 1. If we cannot show simple dialogs for this, then return null.
-  if (cannotShowSimpleDialogs(this ?? globalThis)) {
+  if (cannotShowSimpleDialogs()) {
     return null;
   }
 
@@ -44,8 +44,8 @@ function prompt(message: string = "", default_: string = ""): string | null {
       input: process.stdin,
       output: process.stderr,
     });
-    return await rl.question(message);
-  })();
+    return await rl.question(message + "\n> ");
+  })(message);
 
   // 10. Return result.
   return result;
