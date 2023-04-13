@@ -22,6 +22,8 @@ npm install @jcbhmr/html-simple-dialogs
 🛑 This polyfill **only works with Node.js**. If you're using Deno or a browser,
 these functions are already provided for you.
 
+⚠️ We use `node:readline/promises` which was added in Node.js v17.0.0.
+
 ## Usage
 
 ![Node.js](https://img.shields.io/static/v1?style=for-the-badge&message=Node.js&color=339933&logo=Node.js&logoColor=FFFFFF&label=)
@@ -71,11 +73,6 @@ To start up the dev-loop and run the tests, you can run `npm start`. To run only
 the tests, you can run `npm test`. Note that the demo script is only run in
 non-CI environments from `npm test`. It's recommended to run `npm test` before
 commiting or pushing changes. It also formats your code with Prettier!
-
-We currently don't publish `.d.ts` types due to [qmhc/vite-plugin-dts#194].
-But... These types _should_ be available by default in the `DOM` lib, since they
-match the default browser implementation! If you can solve this `.d.ts` problem,
-please! 🙏 Open a PR!
 
 📚 For more information about how this package works and more dev-focused docs,
 check out [the wiki]!
