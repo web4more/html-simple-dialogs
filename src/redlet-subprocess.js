@@ -22,6 +22,7 @@
  */
 
 import { writeFile } from "node:fs/promises";
+import { serialize } from "node:v8";
 
 const [functionJS, argsJSON, resultPath] = process.argv.slice(2);
 const function_ = (0, eval)(functionJS);
@@ -32,12 +33,12 @@ const args = JSON.parse(argsJSON);
 // too long and messy. This is terser and easier to read.
 await function_(...args)
   .then(async (value) => {
-    const valueJSON = JSON.stringify(value);
-    await writeFile(resultPath, valueJSON);
+    const valueV8 = serialize(value);
+    await writeFile(resultPath, valueV8);
     process.exit(0);
   })
   .catch(async (reason) => {
-    const reasonJSON = JSON.stringify(reason);
-    await writeFile(resultPath, reasonJSON);
+    const reasonV8 = serialize(reason);
+    await writeFile(resultPath, reasonV8);
     process.exit(1);
   });

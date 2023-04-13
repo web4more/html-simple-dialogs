@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { fileSync } from "tmp";
 import { fileURLToPath } from "node:url";
+import { deserialize } from "node:v8";
 
 const subprocessPath = fileURLToPath(
   new URL("redlet-subprocess.js", import.meta.url)
@@ -54,8 +55,8 @@ function redlet<T extends any[], U>(
         { stdio: "inherit" }
       );
 
-      const resultJSON = readFileSync(resultPath, "utf-8");
-      const result = JSON.parse(resultJSON);
+      const resultV8 = readFileSync(resultPath);
+      const result = deserialize(resultV8);
       if (subprocess.status) {
         throw result;
       } else {
