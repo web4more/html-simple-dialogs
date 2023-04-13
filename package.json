@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "🗨️ prompt() and friends for Node.js",
   "keywords": [
-    "sync",
-    "prompt",
-    "confirm",
+    "polyfill",
     "alert",
-    "polyfill"
+    "prompt",
+    "synchronous",
+    "confirm",
+    "subprocess"
   ],
   "homepage": "https://jcbhmr.github.io/html-simple-dialogs/",
   "bugs": "https://github.com/jcbhmr/html-simple-dialogs/issues",
@@ -22,13 +23,11 @@
     "types": "./dist/index.d.ts",
     "default": "./dist/index.js"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "prepack": "vite build",
     "start": "vitest watch",
-    "pretest": "prettier -w --ignore-file .gitignore .",
+    "pretest": "prettier -w --ignore-path .gitignore .",
     "test": "tsc --noEmit && vitest run"
   },
   "devDependencies": {
