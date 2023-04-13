@@ -4,7 +4,7 @@ on:
     types: [released]
   workflow_dispatch:
 concurrency:
-  group: publish-npm
+  group: publish-wiki
   cancel-in-progress: true
 permissions: write-all
 jobs:
