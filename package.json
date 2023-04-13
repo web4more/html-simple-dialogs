@@ -1,6 +1,6 @@
 {
   "name": "@jcbhmr/html-simple-dialogs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "🗨️ prompt() and friends for Node.js",
   "keywords": [
     "polyfill",
