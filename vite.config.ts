@@ -5,19 +5,14 @@ import noBundle from "vite-plugin-no-bundle";
 const config = defineConfig({
   build: {
     target: "esnext",
-    // ssr: true,
+    ssr: true,
     lib: {
-      entry: ["src/index.ts", "src/redletSync-subprocess.js"],
+      entry: ["src/index.ts", "src/redlet-subprocess.js"],
       formats: ["es"],
       fileName: "index",
     },
-    rollupOptions: {
-      output: {
-        manualChunks: {},
-      },
-    },
   },
-  plugins: [dts(), noBundle()],
+  plugins: [/* dts(), */ noBundle()],
 });
 
 export default config;

@@ -1,11 +1,8 @@
 import cannotShowSimpleDialogs from "./cannotShowSimpleDialogs.ts";
 import { normalizeNewlines } from "@oozcitak/infra/lib/String.js";
-import optionallyTruncateASimpleDialogString from "./optionallyTruncateASimpleDialogString.ts";
-import redletSync from "./redletSync.ts";
+import redlet from "./redlet.ts";
 
 /**
- * Result = window.confirm(message);
- *
  * Displays a modal OK/Cancel prompt with the given message, waits for the user
  * to dismiss it, and returns true if the user clicks OK and false if the user
  * clicks Cancel.
@@ -25,13 +22,12 @@ function confirm(message: string = ""): boolean {
   // 2. Set message to the result of normalizing newlines given message.
   message = normalizeNewlines(message);
 
-  // 3. Set message to the result of optionally truncating message.
-  message = optionallyTruncateASimpleDialogString(message);
-
-  // 4. Show message to the user, treating U+000A LF as a line break, and ask the user to respond with a positive or negative response.
+  // 4. Show message to the user, treating U+000A LF as a line break, and ask
+  //    the user to respond with a positive or negative response.
   // 6. Pause until the user responds either positively or negatively.
-  // 8. If the user responded positively, return true; otherwise, the user responded negatively: return false.
-  return redletSync(async (message: string): Promise<boolean> => {
+  // 8. If the user responded positively, return true; otherwise, the user
+  //    responded negatively: return false.
+  return redlet(async (message: string): Promise<boolean> => {
     const { createInterface } = await import("node:readline/promises");
     const { pEvent } = await import("p-event");
 
@@ -42,7 +38,7 @@ function confirm(message: string = ""): boolean {
 
     return await Promise.any([
       rl
-        .question(message + "\n[Y/n] > ")
+        .question(message ? message + "\n[Y/n] > " : "[Y/n] > ")
         .then((a) => /^(?:y|yes|o|ok|)$/i.test(a.trim())),
       pEvent(rl, "close").then(() => (console.log(), false)),
     ]);
