@@ -1,21 +1,17 @@
-import createSubprocessFunction from "./createSubprocessFunction.ts";
+import cannotShowSimpleDialogs from "./cannotShowSimpleDialogs.ts"
+import normalizeNewlines from "./normalizeNewlines.ts"
+import optionallyTruncateASimpleDialogString from "./optionallyTruncateASimpleDialogString.ts"
+import redletSync from "./redletSync.ts";
 
-const readlineQuestionSync = createSubprocessFunction(
-  async (message: string) => {
-    const { createInterface } = await import("node:readline/promises");
-
-    const rl = createInterface({
-      input: process.stdin,
-      output: process.stderr,
-    });
-    try {
-      return await rl.question(message);
-    } finally {
-      rl.close();
-    }
-  }
-);
-
+/**
+ * ```
+ * result = window.prompt(message [, default])
+ * ```
+ *
+ * Displays a modal text control prompt with the given message, waits for the user to dismiss it, and returns the value that the user entered. If the user cancels the prompt, then returns null instead. If the second argument is present, then the given value is used as a default.
+ *
+ * @see https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-prompt
+ */
 function prompt(message: string = "", default_: string = ""): string | null {
   message = "" + message;
   default_ = "" + default_;
@@ -39,29 +35,20 @@ function prompt(message: string = "", default_: string = ""): string | null {
   // 5. Show message to the user, treating U+000A LF as a line break, and ask
   //    the user to either respond with a string value or abort. The response
   //    must be defaulted to the value given by default.
-  // 6. Pause while waiting for the user's response.
-  // 7. Let result be null if the user aborts, or otherwise the string that the
+  // 7. Pause while waiting for the user's response.
+  // 8. Let result be null if the user aborts, or otherwise the string that the
   //    user responded with.
-  const answer = subp`
-    import { createInterface } from "node:readline/promises";
-
+  const result = redletSync(async (message: string): string => {
+    const { createInterface } = await import("node:readline/promises");
     const rl = createInterface({
       input: process.stdin,
       output: process.stderr,
     });
-    try {
-      return await rl.question(${message});
-    } finally {
-      rl.close();
-    }
-  `;
+    return await rl.question(message);
+  })();
 
-  // Invoke WebDriver BiDi user prompt closed with this, false if result is null or true otherwise, and result.
-
-  // Return result.
-
-  const answer = dialog(message);
-  return answer || default_;
+  // 10. Return result.
+  return result;
 }
 
 export default prompt;
