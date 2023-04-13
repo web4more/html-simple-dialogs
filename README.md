@@ -29,24 +29,21 @@ these functions are already provided for you.
 
 `alert()`, `prompt()`, and `confirm()` will **synchronously** block the main
 thread. This behaviour is similar to the corresponding implementation of these
-functions in the browser.
-
-If the current environment isn't suited to a UI prompt (e.g. you're in CI or
-STDIN isn't a TTY), these functions will behave flawlessly and equivalent to
-their browser counterparts as though popups were disabled.
+functions in the browser. If the current environment isn't suited to a UI prompt
+(e.g. you're in CI or STDIN isn't a TTY), these functions will behave flawlessly
+and equivalent to their browser counterparts as though popups were disabled.
 
 These functions are especially useful when you're writing a very basic CLI app
 and you don't need a bunch of fancy parsing schemas to handle one or two input
-fields for strings.
-
-However, if you are looking for a CLI framework for a more advanced CLI app, you
-should check out one of the [popular CLI tools for Node.js].
+fields for strings. However, if you are looking for a CLI framework for a more
+advanced CLI app, you should check out one of the [popular CLI tools for
+Node.js].
 
 ### Example
 
 This example will prompt you for your name, and then ask if you're a developer.
-If you are, it will pause and alert you, otherwise, it will log to the console
-and exit immediately.
+If you are, it will pause and `alert()` you, otherwise, it will log to the
+console and exit immediately.
 
 ```js
 import "@jcbhmr/html-simple-dialogs";
@@ -70,10 +67,10 @@ started, you can use GitHub Codespaces to open this repository in a
 browser-based VS Code instance, or you can clone the repository and run
 `npm install` to install the dependencies.
 
-Then, to start up the dev-loop and run the tests, you can run `npm start`. To
-run only the tests, you can run `npm test`. Note that the demo script is only
-run in non-CI environments from `npm test`. It's recommended to run `npm test`
-before commiting or pushing changes. It also formats your code with Prettier!
+To start up the dev-loop and run the tests, you can run `npm start`. To run only
+the tests, you can run `npm test`. Note that the demo script is only run in
+non-CI environments from `npm test`. It's recommended to run `npm test` before
+commiting or pushing changes. It also formats your code with Prettier!
 
 We currently don't publish `.d.ts` types due to [qmhc/vite-plugin-dts#194].
 But... These types _should_ be available by default in the `DOM` lib, since they
