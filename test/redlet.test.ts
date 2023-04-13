@@ -1,5 +1,5 @@
 import { test, assert, expect, bench } from "vitest";
-import redlet from "../src/redlet.ts";
+import redlet from "../src/redlet.js";
 
 test("it's synchronous", () => {
   const f = redlet(async (a, b) => a + b);
