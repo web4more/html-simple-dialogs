@@ -1,12 +1,11 @@
-name: Publish
+name: Publish npm
 on:
   release:
     types: [released]
   workflow_dispatch:
 concurrency:
-  group: publish
+  group: publish-npm
   cancel-in-progress: true
-permissions: write-all
 jobs:
   publish-npm:
     runs-on: ubuntu-latest
@@ -20,11 +19,3 @@ jobs:
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-  publish-wiki:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: spenserblack/actions-wiki@v0.2.0
-        with:
-          path: wiki
-          token: x:${{ secrets.GITHUB_TOKEN }}
