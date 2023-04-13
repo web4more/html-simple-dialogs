@@ -4,12 +4,13 @@
     "module": "ESNext",
     "target": "ESNext",
     "moduleResolution": "bundler",
+    "lib": ["ESNext"],
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "allowArbitraryExtensions": true,
     "allowImportingTsExtensions": true
   },
-  "include": ["src", "test", "vite.config.ts"],
+  "include": ["src", "test", "vite.config.ts", "index.d.ts"],
   "exclude": ["node_modules"]
 }

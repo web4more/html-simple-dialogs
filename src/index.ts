@@ -1,4 +1,3 @@
-// @ts-nocheck
 import alert from "./alert.ts";
 import confirm from "./confirm.ts";
 import prompt from "./prompt.ts";
