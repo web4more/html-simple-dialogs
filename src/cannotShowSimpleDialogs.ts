@@ -1,7 +1,8 @@
 import parseBoolean from "parseboolean";
 
 let exiting = false;
-process.on("exit", () => {
+// https://nodejs.org/api/events.html#emitterprependlistenereventname-listener
+process.prependListener("exit", () => {
   exiting = true;
 });
 
@@ -38,6 +39,10 @@ function cannotShowSimpleDialogs(): boolean {
   }
 
   if (parseBoolean(process.env.NO_DIALOGS)) {
+    return true;
+  }
+
+  if (parseBoolean(process.env.CI)) {
     return true;
   }
 

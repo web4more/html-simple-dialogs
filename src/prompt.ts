@@ -1,14 +1,15 @@
 import cannotShowSimpleDialogs from "./cannotShowSimpleDialogs.ts";
-import { normalizeNewlines } from "@oozcitak/infra";
+import { normalizeNewlines } from "@oozcitak/infra/lib/String.js";
 import optionallyTruncateASimpleDialogString from "./optionallyTruncateASimpleDialogString.ts";
 import redletSync from "./redletSync.ts";
 
 /**
- * ```
- * result = window.prompt(message [, default])
- * ```
+ * Result = window.prompt(message [, default])
  *
- * Displays a modal text control prompt with the given message, waits for the user to dismiss it, and returns the value that the user entered. If the user cancels the prompt, then returns null instead. If the second argument is present, then the given value is used as a default.
+ * Displays a modal text control prompt with the given message, waits for the
+ * user to dismiss it, and returns the value that the user entered. If the user
+ * cancels the prompt, then returns null instead. If the second argument is
+ * present, then the given value is used as a default.
  *
  * @see https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-prompt
  */
@@ -38,13 +39,19 @@ function prompt(message: string = "", default_: string = ""): string | null {
   // 7. Pause while waiting for the user's response.
   // 8. Let result be null if the user aborts, or otherwise the string that the
   //    user responded with.
-  const result = redletSync(async (message: string): string => {
+  const result = redletSync(async (message: string): Promise<string> => {
     const { createInterface } = await import("node:readline/promises");
+    const { pEvent } = await import("p-event");
+
     const rl = createInterface({
       input: process.stdin,
       output: process.stderr,
     });
-    return await rl.question(message + "\n> ");
+
+    return await Promise.any([
+      rl.question(message + "\n> "),
+      pEvent(rl, "close").then(() => (console.log(), null)),
+    ]);
   })(message);
 
   // 10. Return result.
