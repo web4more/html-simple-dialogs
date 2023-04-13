@@ -89,6 +89,7 @@ please! 🙏 Open a PR!
 📚 For more information about how this package works and more dev-focused docs,
 check out [the wiki]!
 
-[npm integration]: https://deno.land/manual/node
+[yarn]: https://yarnpkg.com/
+[pnpm]: https://pnpm.io/
 [qmhc/vite-plugin-dts#194]: https://github.com/qmhc/vite-plugin-dts/issues/194
 [the wiki]: https://github.com/jcbhmr/node-simple-dialogs/wiki
