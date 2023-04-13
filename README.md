@@ -89,7 +89,11 @@ please! 🙏 Open a PR!
 📚 For more information about how this package works and more dev-focused docs,
 check out [the wiki]!
 
+<!-- prettier-ignore-start -->
 [yarn]: https://yarnpkg.com/
 [pnpm]: https://pnpm.io/
+[popular cli tools for node.js]: https://github.com/sindresorhus/awesome-nodejs#command-line-utilities
+[vite]: https://vitejs.dev/
 [qmhc/vite-plugin-dts#194]: https://github.com/qmhc/vite-plugin-dts/issues/194
 [the wiki]: https://github.com/jcbhmr/node-simple-dialogs/wiki
+<!-- prettier-ignore-end -->
