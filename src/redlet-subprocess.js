@@ -18,7 +18,7 @@
  *
  * @file
  * @example
- *   node redletSync-subprocess.js 'async (a, b) => a + b' '[45, 1000]' /tmp/result.json
+ *   node redlet-subprocess.js 'async (a, b) => a + b' '[45, 1000]' /tmp/result.json
  */
 
 import { writeFile } from "node:fs/promises";
