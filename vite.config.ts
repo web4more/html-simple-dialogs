@@ -7,7 +7,7 @@ const config = defineConfig({
     target: "esnext",
     ssr: true,
     lib: {
-      entry: ["src/index.ts", "src/prompt-subprocess.ts"],
+      entry: ["src/index.ts", "src/redletSync-subprocess.ts"],
       formats: ["es"],
       fileName: "index",
     },
