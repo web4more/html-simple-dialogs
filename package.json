@@ -1,6 +1,6 @@
 {
   "name": "@jcbhmr/html-simple-dialogs",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "🗨️ prompt() and friends for Node.js",
   "keywords": [
     "polyfill",
@@ -14,10 +14,7 @@
   "bugs": "https://github.com/jcbhmr/html-simple-dialogs/issues",
   "repository": "github:jcbhmr/html-simple-dialogs",
   "license": "MIT",
-  "contributors": [
-    "anseki (https://github.com/anseki)",
-    "Jacob Hummer <jcbhmr@outlook.com> (https://jcbhmr.me/)"
-  ],
+  "author": "Jacob Hummer <jcbhmr@outlook.com> (https://jcbhmr.me/)",
   "type": "module",
   "exports": {
     "types": "./index.d.ts",
