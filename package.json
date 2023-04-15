@@ -14,7 +14,10 @@
   "bugs": "https://github.com/jcbhmr/html-simple-dialogs/issues",
   "repository": "github:jcbhmr/html-simple-dialogs",
   "license": "MIT",
-  "author": "Jacob Hummer <jcbhmr@outlook.com> (https://jcbhmr.me/)",
+  "contributors": [
+    "anseki (https://github.com/anseki)",
+    "Jacob Hummer <jcbhmr@outlook.com> (https://jcbhmr.me/)"
+  ],
   "type": "module",
   "exports": {
     "types": "./index.d.ts",
