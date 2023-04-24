@@ -83,5 +83,5 @@ check out [the wiki]!
 [popular cli tools for node.js]: https://github.com/sindresorhus/awesome-nodejs#command-line-utilities
 [vite]: https://vitejs.dev/
 [qmhc/vite-plugin-dts#194]: https://github.com/qmhc/vite-plugin-dts/issues/194
-[the wiki]: https://github.com/jcbhmr/node-simple-dialogs/wiki
+[the wiki]: https://github.com/jcbhmr/html-simple-dialogs/wiki
 <!-- prettier-ignore-end -->
